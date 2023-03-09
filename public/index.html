@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <h1>Hola desde socket server</h1>
+
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io()
+        socket.on('connect', () =>{
+            console.log('Conectado al servidor')
+        })
+        socket.on('disconnect', () =>{
+            console.log('Perdimos conexion')
+        })
+
+        socket.emit('mensaje', {nombre: 'Amilcar'})
+        socket.on('mensaje', function( payload ){
+            console.log('Escuchado', payload)
+        })
+    </script>
+</body>
+</html>
